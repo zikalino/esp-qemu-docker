@@ -36,3 +36,16 @@ WORKDIR /
 RUN cd / && git clone https://github.com/espressif/qemu.git --recursive
 RUN mkdir /qemu-xtensa && cd /qemu-xtensa && ../qemu/configure --prefix=`pwd`/root --target-list=xtensa-softmmu,xtensaeb-softmmu
 RUN cd /qemu-xtensa && make install
+
+# install all the additional esp-idf tools
+# note: tools are installed in /root/.espressif folder
+# that applies to both - compilers and python env folder used by esp-idf
+# GitHub Actions map their folder into /github/home and change HOME folder location
+# therefore tools may need to be copied when used in GitHub actions environment
+RUN git clone https://github.com/espressif/esp-idf.git \
+    && cd esp-idf \
+    && ./install.sh all \
+    && . ./export.sh \
+    && python3 ./tools/idf_tools.py install-python-env --features pytest,ci \
+    && cd .. \
+    && rm -rf esp-idf
