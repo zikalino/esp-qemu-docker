@@ -49,16 +49,18 @@ RUN git clone https://github.com/espressif/esp-idf.git \
 
 # install additional packages without activating env
 RUN echo "------------------------- INSTALLING ADDITIONAL PACKAGES" \
-    && ~/.espressif/python_env/idf5.1_py3.10_env/bin/pip freeze \
-    && ~/.espressif/python_env/idf5.1_py3.10_env/bin/pip install pyecharts \
-    && ~/.espressif/python_env/idf5.1_py3.10_env/bin/pip install idf_build_apps \
-    && ~/.espressif/python_env/idf5.1_py3.10_env/bin/pip install PyYaml \
-    && ~/.espressif/python_env/idf5.1_py3.10_env/bin/pip install matplotlib \
-    && ~/.espressif/python_env/idf5.1_py3.10_env/bin/pip install pandas \
-    && ~/.espressif/python_env/idf5.1_py3.10_env/bin/pip install jira==3.2.0 \
-    && ~/.espressif/python_env/idf5.1_py3.10_env/bin/pip install PyGithub==1.54.1 \
-    && ~/.espressif/python_env/idf5.1_py3.10_env/bin/pip install python-gitlab==3.0.0 \      
-    && ~/.espressif/python_env/idf5.1_py3.10_env/bin/pip install xmltodict \
-    && ~/.espressif/python_env/idf5.1_py3.10_env/bin/pip install dateutils \
+    && . ~/.espressif/python_env/idf5.1_py3.10_env/bin/activate \
+    && pip freeze \
+    && pip install pyecharts \
+    && pip install idf_build_apps \
+    && pip install PyYaml \
+    && pip install matplotlib \
+    && pip install pandas \
+    && pip install jira==3.2.0 \
+    && pip install PyGithub==1.54.1 \
+    && pip install python-gitlab==3.0.0 \      
+    && pip install xmltodict \
+    && pip install dateutils \
     && echo "------------------------- PACKAGES INSTALLED" \
-    && ~/.espressif/python_env/idf5.1_py3.10_env/bin/pip freeze
+    && pip freeze
+
