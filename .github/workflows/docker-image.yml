@@ -11,6 +11,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Pull Existing Image
+      run: docker pull zimkal/esp-qemu
     - name: Build the Docker image
       run: docker build . --tag zimkal/esp-qemu
     - name: Push the Docker image
