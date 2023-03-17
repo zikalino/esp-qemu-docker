@@ -47,7 +47,8 @@ RUN git clone https://github.com/espressif/esp-idf.git \
     && rm -rf esp-idf
 
 
-RUN source ~/.espressif/python_env/idf5.1_py3.10_env/bin/activate \
+RUN ~/.espressif/python_env/idf5.1_py3.10_env/bin/activate \
+    && PATH="~/.espressif/python_env/idf5.1_py3.10_env/bin:$PATH" \
     && pip install pyecharts \
     && pip install idf_build_apps \
     && pip install PyYaml \
