@@ -24,10 +24,6 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.24.1/cmake-3.24.1
       && rm /tmp/cmake-install.sh \
       && ln -s /opt/cmake-3.24.1/bin/* /usr/local/bin
 
-RUN pip install pyecharts
-RUN pip install idf_build_apps
-RUN pip install PyYaml
-
 # set path up front for QEMU binaries target destination
 ENV PATH=/qemu-xtensa:${PATH}
 
@@ -49,3 +45,15 @@ RUN git clone https://github.com/espressif/esp-idf.git \
     && python3 ./tools/idf_tools.py install-python-env --features pytest,ci \
     && cd .. \
     && rm -rf esp-idf
+
+
+RUN source ~/.espressif/python_env/idf5.1_py3.10_env/bin/activate \
+    && pip install pyecharts \
+    && pip install idf_build_apps \
+    && pip install PyYaml \
+    && pip install matplotlib \
+    && pip install pandas \
+    && pip install jira==3.2.0 \
+    && pip install PyGithub==1.54.1 \
+    && pip install python-gitlab==3.0.0 \      
+    && pip install xmltodict
