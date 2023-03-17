@@ -50,6 +50,7 @@ RUN git clone https://github.com/espressif/esp-idf.git \
 RUN chmod u+x ~/.espressif/python_env/idf5.1_py3.10_env/bin/activate \
     && ~/.espressif/python_env/idf5.1_py3.10_env/bin/activate \
     && PATH="~/.espressif/python_env/idf5.1_py3.10_env/bin:$PATH" \
+    && pip freeze \
     && pip install pyecharts \
     && pip install idf_build_apps \
     && pip install PyYaml \
@@ -58,4 +59,5 @@ RUN chmod u+x ~/.espressif/python_env/idf5.1_py3.10_env/bin/activate \
     && pip install jira==3.2.0 \
     && pip install PyGithub==1.54.1 \
     && pip install python-gitlab==3.0.0 \      
-    && pip install xmltodict
+    && pip install xmltodict \
+    && pip freeze
