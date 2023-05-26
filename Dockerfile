@@ -49,7 +49,7 @@ RUN git clone https://github.com/espressif/esp-idf.git \
 
 # install additional packages without activating env
 RUN echo "------------------------- INSTALLING ADDITIONAL PACKAGES" \
-    && . ~/.espressif/python_env/idf5.1_py3.10_env/bin/activate \
+    && . ~/.espressif/python_env/idf5.2_py3.10_env/bin/activate \
     && pip freeze \
     && pip install pyecharts \
     && pip install idf_build_apps \
