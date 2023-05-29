@@ -25,13 +25,13 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.24.1/cmake-3.24.1
       && ln -s /opt/cmake-3.24.1/bin/* /usr/local/bin
 
 # set path up front for QEMU binaries target destination
-ENV PATH=/qemu-xtensa:${PATH}
+ENV PATH=/qemu-esp:${PATH}
 
 # clone and build QMEU, currently disabled as it needs GitLab credentials
 WORKDIR /
 RUN cd / && git clone https://github.com/espressif/qemu.git --recursive
-RUN mkdir /qemu-xtensa && cd /qemu-xtensa && ../qemu/configure --prefix=`pwd`/root --target-list=xtensa-softmmu,xtensaeb-softmmu
-RUN cd /qemu-xtensa && make install
+RUN mkdir /qemu-esp && cd /qemu-esp && ../qemu/configure --prefix=`pwd`/root --target-list=xtensa-softmmu,xtensaeb-softmmu,riscv32-softmmu
+RUN cd /qemu-esp && make install
 
 # install all the additional esp-idf tools
 # note: tools are installed in /root/.espressif folder
